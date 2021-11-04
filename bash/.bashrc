@@ -2,13 +2,25 @@
 # ~/.bashrc
 #
 
-# if not running interactively, don't do anything
+# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='\u :: \W > '
-
-# alias definitions
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    source "$HOME/.bash_aliases"
 fi
+
+# prepend 'cd' when just a path is entered
+shopt -s autocd
+
+# autocorrect path
+shopt -s cdspell
+
+# check if window sized has changed
+shopt -s checkwinsize
+
+# ignore case when searching
+shopt -s nocaseglob
+
+PS1='\u@\h :: \W \$ '
+
+fortune -s | cowthink -f moose -n && echo 

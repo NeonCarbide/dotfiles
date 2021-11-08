@@ -9,6 +9,10 @@ if [ -f "$HOME/.bash_aliases" ]; then
     source "$HOME/.bash_aliases"
 fi
 
+if [ -f "$HOME/.profile" ]; then
+    source "$HOME/.profile"
+fi
+
 # prepend 'cd' when just a path is entered
 shopt -s autocd
 

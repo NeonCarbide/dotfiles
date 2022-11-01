@@ -1,0 +1,45 @@
+Config
+    { alignSep         = "}{"
+    , bgColor          = "#1e2320"
+    , fgColor          = "#ffffff"
+    , font             = "xft:Iosevka Term:pixelsize=13"
+    , hideOnStart      = False
+    , iconOffset       = -1
+    , lowerOnStart     = True
+    , overrideRedirect = False
+    , persistent       = False
+    , position         = TopSize L 100 21
+    , sepChar          = "%"
+    , template         = "%XMonadLog% }{ %mpris2%<box><fc=#1e2320,#ffffff:0>%alsa:default:Master%</fc></box>%battery%<box><fc=#1e2320,#ffffff:0>%CYYZ%</fc></box>%date%"
+    , textOffset       = 15
+    , commands         =
+        [ Run Alsa "default" "Master"
+            [ "-t", " V: <volume>%<status> "
+	        , "-b", "▒", "-f", "█"
+	        , "-x", "??"
+	        , "--"
+            , "-O", "", "-o", "-"
+	        , "-C", "#1e2320,#ffffff:0"
+	        , "-c", "#1e2320,#ffffff:0"
+            ]
+        , Run BatteryP ["BAT0"]
+            [ "-t", " B: <left>%<acstatus> "
+	        , "-b", "▒", "-f", "█"
+	        , "-x", "??"
+	        , "--"
+            , "-O", "+", "-o", "", "-i", "~"
+            ] 600
+        , Run Date " %a ~ %b %d %Y ~ %T " "date" 10
+        , Run Mpris2 "ncspot"
+            [ "-t", " <title> ~ <artist> "
+            , "-x", ""
+            ] 10
+	    , Run Weather "CYYZ"
+	        [ "-t", " <skyCondition> <weather> <tempC>°C "
+	        , "-x", "??"
+	        , "--"
+	        , "-w", "~"
+	        ] 36000
+        , Run XMonadLog
+        ]
+    }

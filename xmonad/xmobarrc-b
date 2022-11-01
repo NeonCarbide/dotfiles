@@ -1,0 +1,43 @@
+Config
+    { alignSep         = "}{"
+    , bgColor          = "#1e2320"
+    , fgColor          = "#ffffff"
+    , font             = "xft:Iosevka Term:pixelsize=13"
+    , hideOnStart      = False
+    , iconOffset       = -1
+    , lowerOnStart     = True
+    , overrideRedirect = False
+    , persistent       = False
+    , position         = BottomSize L 100 21
+    , sepChar          = "%"
+    , template         = "<box><fc=#1e2320,#ffffff:0> %alsa:default:Master% </fc></box> } %xmonad% { <box><fc=#1e2320,#ffffff:0> %battery% </fc></box>"
+    , textOffset       = 15
+    , commands         =
+        [ Run Alsa "default" "Master"
+            [ "-t", "<volumebar><status>"
+	    , "-b", "▒"
+	    , "-f", "█"
+	    , "-x", "??"
+	    , "--"
+            , "-O", ""
+            , "-o", ":M"
+	    , "-C", "#1e2320,#ffffff:0"
+	    , "-c", "#1e2320,#ffffff:0"
+            ]
+        , Run BatteryP ["BAT0"]
+            [ "-t", "<acstatus><leftbar>"
+	    , "-b", "▒"
+	    , "-f", "█"
+	    , "-x", "??"
+	    , "--"
+            , "-O", "+:"
+            , "-i", "~:"
+            , "-o", ""
+            ] 300
+	, Run Mpris2 "ncspot"
+	    [ "-t", "[<album>] <artist> ~ <title>"
+	    , "-x", ""
+	    ] 50
+	, Run NamedXPropertyLog "_XMONAD_LOG_1" "xmonad"
+        ]
+    }

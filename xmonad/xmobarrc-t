@@ -1,0 +1,25 @@
+Config
+    { alignSep         = "}{"
+    , bgColor          = "#1e2320"
+    , fgColor          = "#ffffff"
+    , font             = "xft:Iosevka Term:pixelsize=13"
+    , hideOnStart      = False
+    , iconOffset       = -1
+    , lowerOnStart     = True
+    , overrideRedirect = False
+    , persistent       = False
+    , position         = TopSize L 100 21
+    , sepChar          = "%"
+    , template         = "%xmonad0% }{ %CYYZ% <box><fc=#1e2320,#ffffff:0> %date% </fc></box>"
+    , textOffset       = 15
+    , commands         =
+        [ Run Date "%a ~ %b %d %Y ~ %T" "date" 10
+        , Run NamedXPropertyLog "_XMONAD_LOG_0" "xmonad0"
+	, Run Weather "CYYZ"
+	    [ "-t", "<skyCondition> <weather> <tempC>°C"
+	    , "-x", "??"
+	    , "--"
+	    , "-w", "~"
+	    ] 36000
+        ]
+    }

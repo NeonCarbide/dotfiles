@@ -1,0 +1,16 @@
+#!/bin/bash
+
+APPS = ()
+KILL = ()
+
+for app in "${APPS[@]}" do
+    kill -9 $(pidof $app)
+done
+
+for app in "${KILL[@]}" do
+    kill -9 $(pidof $app)
+done
+
+for app in "${APPS[@]}" do
+    env $app ${@:2} &
+done

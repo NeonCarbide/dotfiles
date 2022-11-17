@@ -1,0 +1,123 @@
+# ~/.config/starship.toml
+
+# get editor completions based on config schema
+"$schema"   = 'https://starship.rs/config-schema.json'
+
+# don't add new line after commands
+add_newline = false
+
+# change prompt format
+format = """
+[┏━━━╍┅┉](yellow)
+[┃](yellow)$username\
+$directory\
+$sudo\
+$cmd_duration
+[┗━](yellow)$character"""
+
+#format = """
+#[┏](yellow)$username\
+#$hostname\
+#$localip\
+#$shlvl\
+#$singularity\
+#$kubernetes\
+#$directory\
+#$vcsh\
+#$git_branch\
+#$git_commit\
+#$git_state\
+#$git_metrics\
+#$git_status\
+#$hg_branch\
+#$docker_context\
+#$package\
+#$c\
+#$cmake\
+#$cobol\
+#$daml\
+#$dart\
+#$deno\
+#$dotnet\
+#$elixir\
+#$elm\
+#$erlang\
+#$golang\
+#$haskell\
+#$helm\
+#$java\
+#$julia\
+#$kotlin\
+#$lua\
+#$nim\
+#$nodejs\
+#$ocaml\
+#$perl\
+#$php\
+#$pulumi\
+#$purescript\
+#$python\
+#$raku\
+#$rlang\
+#$red\
+#$ruby\
+#$rust\
+#$scala\
+#$swift\
+#$terraform\
+#$vlang\
+#$vagrant\
+#$zig\
+#$buf\
+#$nix_shell\
+#$conda\
+#$meson\
+#$spack\
+#$memory_usage\
+#$aws\
+#$gcloud\
+#$openstack\
+#$azure\
+#$env_var\
+#$crystal\
+#$custom\
+#$sudo\
+#$cmd_duration\
+#$line_break\
+#$jobs\
+#$battery\
+#$time\
+#$status\
+#$container\
+#$shell\
+#[┗━](yellow)$character"""
+
+# change symbols
+[character]
+#success_symbol  = " [Δ](grey)"
+#error_symbol    = " [Χ](bold red)"
+success_symbol  = "[🭬](yellow)"
+error_symbol    = "[🭬](bold red)"
+
+# show fast command executions in terminal (in ms)
+[cmd_duration]
+min_time            = 50
+show_milliseconds   = true
+
+# format directory module
+[directory]
+truncation_length   = 0
+
+# format sudo module
+[sudo]
+style       = "bold purple"
+symbol      = "𐲨 "
+format      = "[$symbol]($style)"
+disabled    = false
+
+# format username module
+[username]
+style_user  = "bold yellow"
+style_root  = "bold purple"
+format      = " [$user]($style) :: "
+show_always = true
